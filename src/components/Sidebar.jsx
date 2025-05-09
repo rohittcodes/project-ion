@@ -3,14 +3,15 @@ import { IoPersonOutline } from "react-icons/io5";
 import {
   MdSpaceDashboard,
   MdSearch,
-  MdExplore,
   MdPersonAdd,
-  MdOutlineSyncProblem,
   MdHelp,
   MdSupportAgent,
 } from "react-icons/md";
+import { GoProjectSymlink } from "react-icons/go";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
-
+import { FaRankingStar } from "react-icons/fa6";
+import { BiPlus } from "react-icons/bi";
 
 const Sidebar = () => {
   const adminNav = [
@@ -25,14 +26,24 @@ const Sidebar = () => {
       href: "/students",
     },
     {
-      label: "Something2",
-      icon: MdExplore,
-      href: "/bro",
-    },
-    {
       label: "Something3",
       icon: MdPersonAdd,
       href: "/register",
+    },
+    {
+      label: "Project",
+      icon: AiOutlineFundProjectionScreen,
+      href: "/projects",
+    },
+    {
+      label: "Ranking",
+      icon: FaRankingStar,
+      href: "/ranking",
+    },
+    {
+      label: "ProblemStatement",
+      icon: GoProjectSymlink,
+      href: "/problemstatement",
     },
   ];
 
@@ -42,20 +53,26 @@ const Sidebar = () => {
       icon: MdSpaceDashboard,
       href: "/",
     },
+
     {
-      label: "Something1",
+      label: "Project",
+      icon: AiOutlineFundProjectionScreen,
+      href: "/projects",
+    },
+    {
+      label: "explain",
       icon: MdSearch,
-      href: "/some",
+      href: "/explain/snippets",
     },
     {
-      label: "Something2",
-      icon: MdOutlineSyncProblem,
-      href: "/bro",
+      label: "add",
+      icon: BiPlus,
+      href: "/explain/add",
     },
     {
-      label: "Something3",
-      icon: MdPersonAdd,
-      href: "/what",
+      label: "Ranking",
+      icon: FaRankingStar,
+      href: "/ranking",
     },
   ];
 
@@ -63,7 +80,7 @@ const Sidebar = () => {
 
   if (location.pathname.startsWith("/admin")) {
     return (
-      <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary">
+      <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary  bg-background-main">
         <div className="flex flex-col h-full py-4 font-semibold justify-between">
           <div className="flex flex-col items-center justify-center gap-6 mx-4">
             {adminNav.map((items) => (
@@ -93,13 +110,13 @@ const Sidebar = () => {
     );
   }
   return (
-    <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary">
+    <div className="w-16 h-screen sticky top-0 left-0 border-border-primary border-r-[1px] text-text-primary bg-background-main">
       <div className="flex flex-col h-full py-4 font-semibold justify-between">
         <div className="flex flex-col items-center justify-center gap-6 mx-4">
           {navItems.map((items) => (
             <NavLink
               key={items.label}
-              to={items.href}
+              to={"/student" + items.href}
               className={({ isActive }) =>
                 isActive
                   ? "flex justify-center rounded-md cursor-pointer items-center w-8 h-8 bg-background-components"
